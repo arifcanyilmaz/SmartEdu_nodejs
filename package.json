@@ -14,7 +14,9 @@
   "author": "Arif Yılmaz",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^4.21.1",
+    "mongoose": "^8.7.2",
     "prettier": "^3.3.3"
   },
   "devDependencies": {
