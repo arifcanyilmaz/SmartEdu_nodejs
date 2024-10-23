@@ -1,5 +1,6 @@
 const mongoose = require("mongoose"); // Mongodb için (NPM)
 const slugify = require("slugify"); // CORE
+const Category = require("./Category");
 const Schema = mongoose.Schema;
 
 const CourseSchema = new Schema({
@@ -20,6 +21,10 @@ const CourseSchema = new Schema({
   slug: {
     type: String,
     unique: true,
+  },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'category'
   }
 });
 

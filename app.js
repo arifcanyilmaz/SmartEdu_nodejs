@@ -1,7 +1,8 @@
 const express = require("express"); // Express modülünü import ettik. (CORE)
 const mongoose = require('mongoose') // Mongodb için (NPM)
 const pageRoute = require('./routes/pageRoute') // Sayfa Yönlendirme Routes Import
-const courseRoute = require('./routes/courseRoute') // Course Routes Import
+const courseRoute = require('./routes/courseRoute'); // Course Routes Import
+const categoryRoute = require('./routes/categoryRoute'); // Category Routes Import
 const app = express();
 
 //Connect DB
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 //Routes
 app.use("/", pageRoute);
 app.use("/courses", courseRoute);
+app.use("/categories", categoryRoute)
 
 
 
