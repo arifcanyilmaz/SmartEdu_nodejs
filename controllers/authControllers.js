@@ -6,10 +6,7 @@ exports.createUser = async (req, res) => {
   try {
     const user = await User.create(req.body);
 
-    res.status(201).json({
-      status: "succes",
-      user,
-    });
+    res.status(201).redirect('/login')
   } catch (err) {
     res.status(400).json({
       status: "failed",
@@ -32,6 +29,7 @@ exports.loginUser = async (req, res) => {
       return res.status(400).send("Invalid Password");
     }
     req.session.userID = user._id;
+    req.session.role = user.role;
     res.status(200).redirect("/users/dashboard");
   } catch (err) {
     console.log(err);
