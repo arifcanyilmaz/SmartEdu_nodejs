@@ -1,4 +1,5 @@
 exports.getIndexPage = (req, res) => {
+  console.log(req.session.userID)
   res.status(200).render("index", {
     page_name: "index",
   });
@@ -16,11 +17,6 @@ exports.getCoursesPage = (req, res) => {
   });
 };
 
-exports.getDashboardPage = (req, res) => {
-  res.status(200).render("dashboard", {
-    page_name: "dashboard",
-  });
-};
 
 exports.getContactPage = (req, res) => {
   res.status(200).render("contact", {
@@ -29,9 +25,13 @@ exports.getContactPage = (req, res) => {
 };
 
 exports.getLoginPage = (req, res) => {
-  res.status(200).render("login");
+  res.status(200).render("login", {
+    page_name: "login",
+  });
 };
 
 exports.getRegisterPage = (req, res) => {
-  res.status(200).render("register");
+  res.status(200).render("register", {
+    page_name: "register",
+  });
 };

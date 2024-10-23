@@ -6,7 +6,7 @@ const CategorySchema = new Schema({
   name: {
     type: String,
     unique: true,
-    require: true,
+    required: true,
   },
   slug: {
     type: String,
