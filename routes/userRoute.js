@@ -2,7 +2,8 @@ const express = require('express');
 const User = require("../models/User");
 const authController = require('../controllers/authControllers');
 const authMiddleware = require('../middlewares/authMiddleware');
-const {body} = require('express-validator')
+const {body} = require('express-validator');
+const Category = require('../models/Category');
 const router = express.Router();
 
 router.route('/signup').post(
@@ -22,6 +23,8 @@ router.route('/signup').post(
 router.route('/login').post(authController.loginUser);
 router.route('/logout').get(authController.loginOutUser);
 router.route('/dashboard').get(authMiddleware, authController.getDashboardPage);
+router.route('/:id').delete(authController.deleteUsers);
+
 
 
 module.exports = router;
