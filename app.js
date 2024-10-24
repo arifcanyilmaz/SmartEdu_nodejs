@@ -2,6 +2,7 @@ const express = require("express"); // Express modülünü import ettik. (NPM)
 const mongoose = require('mongoose') // Mongodb için (NPM)
 const session = require("express-session"); // Session için (NPM)
 const MongoStore = require('connect-mongo'); // Giriş Çıkışı DBde tutmak (NPM)
+const flash = require('connect-flash');
 const pageRoute = require('./routes/pageRoute') // Sayfa Yönlendirme Routes Import
 const courseRoute = require('./routes/courseRoute'); // Course Routes Import
 const categoryRoute = require('./routes/categoryRoute'); // Category Routes Import
@@ -28,6 +29,11 @@ app.use(session({
   saveUninitialized: true,
   store: MongoStore.create({ mongoUrl: 'mongodb://localhost/smartedu-db' }),
 }))
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.flashMessages = req.flash();
+  next();
+})
 
 //Routes
 app.use('*', (req, res, next) => {
